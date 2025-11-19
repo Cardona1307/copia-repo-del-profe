@@ -24,7 +24,8 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Title and description
-st.title('📊 Análisis de Sensor - Gas Lorelay")
+# ERROR CORREGIDO: Se cambiaron las comillas dobles finales por comillas simples.
+st.title('📊 Análisis de Sensor - Gas Lorelay')
 st.markdown("""
     Esta aplicación permite analizar los datos recogidos por un sensor de gas 
 """)
@@ -69,7 +70,8 @@ if uploaded_file is not None:
         tab1, tab2, tab3, tab4 = st.tabs(["📈 Visualización", "📊 Estadísticas", "🔍 Filtros", "🗺️ Información del Sitio"])
 
         with tab1:
-            st.subheader('Sensor de luz Olimpo')
+            # NOTA: Cambiando "Sensor de luz Olimpo" a "Sensor de Gas"
+            st.subheader('Sensor de Gas')
             
             # Chart type selector
             chart_type = st.selectbox(
@@ -151,15 +153,17 @@ if uploaded_file is not None:
                     st.write(f"Registros con valor inferior a {max_val:.2f}:")
                     st.dataframe(filtrado_df_max)
 
-                # Download filtered data
-                if st.button('Descargar datos filtrados'):
-                    csv = filtrado_df_min.to_csv().encode('utf-8')
-                    st.download_button(
-                        label="Descargar CSV",
-                        data=csv,
-                        file_name='datos_filtrados.csv',
-                        mime='text/csv',
-                    )
+                # Download filtered data (Este botón necesita estar fuera de la columna para funcionar mejor)
+                st.markdown("---")
+                # Crear el CSV codificado para la descarga
+                csv_data = filtrado_df_min.to_csv().encode('utf-8')
+                
+                st.download_button(
+                    label="Descargar datos filtrados (CSV)",
+                    data=csv_data,
+                    file_name='datos_filtrados.csv',
+                    mime='text/csv',
+                )
 
         with tab4:
             st.subheader("Información del Sitio de Medición")
@@ -176,13 +180,14 @@ if uploaded_file is not None:
             with col2:
                 st.write("### Detalles del Sensor")
                 st.write("- Tipo: ESP32")
-                st.write("- Variable medida: Según configuración del sensor")
-                st.write("- Frecuencia de medición: Según configuración")
+                # NOTA: Variable ajustada a Gas
+                st.write("- Variable medida: **Concentración de Gas**")
+                st.write("- Frecuencia de medición: Según configuración (3 segundos en el simulador)")
                 st.write("- Ubicación: Campus universitario")
 
     except Exception as e:
         st.error(f'Error al procesar el archivo: {str(e)}')
-        st.info('Asegúrese de que el archivo CSV tenga al menos una columna con datos.')
+        st.info('Asegúrese de que el archivo CSV tenga al menos una columna con datos y la estructura correcta.')
 else:
     st.warning('Por favor, cargue un archivo CSV para comenzar el análisis.')
     
