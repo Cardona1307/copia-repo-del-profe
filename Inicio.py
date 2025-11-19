@@ -6,7 +6,7 @@ from datetime import datetime
 
 # Page configuration
 st.set_page_config(
-    page_title="Análisis de Sensores - Mi Ciudad",
+    page_title="Análisis de Sensor - Gas Lorelay",
     page_icon="📊",
     layout="wide"
 )
@@ -24,10 +24,9 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Title and description
-st.title('📊 Análisis de datos de Sensores en Mi Ciudad')
+st.title('📊 Análisis de Sensor - Gas Lorelay")
 st.markdown("""
-    Esta aplicación permite analizar datos de sensores
-    recolectados en diferentes puntos de la ciudad.
+    Esta aplicación permite analizar los datos recogidos por un sensor de gas 
 """)
 
 # Create map data for EAFIT
@@ -38,7 +37,7 @@ eafit_location = pd.DataFrame({
 })
 
 # Display map
-st.subheader("📍 Ubicación de los Sensores - Universidad EAFIT")
+st.subheader("📍 Ubicación del sensor - Universidad EAFIT")
 st.map(eafit_location, zoom=15)
 
 # File uploader
