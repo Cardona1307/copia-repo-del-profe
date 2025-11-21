@@ -6,7 +6,7 @@ from datetime import datetime
 
 # Page configuration
 st.set_page_config(
-    page_title="Análisis de Sensor - Gas Lorelay",
+    page_title="Análisis de Sensor LUZ - JCCV",
     page_icon="📊",
     layout="wide"
 )
@@ -25,9 +25,9 @@ st.markdown("""
 
 # Title and description
 # ERROR CORREGIDO: Se cambiaron las comillas dobles finales por comillas simples.
-st.title('📊 Análisis de Sensor - Gas Lorelay')
+st.title('📊 Análisis de sensor LUZ - JCCV')
 st.markdown("""
-    Esta aplicación permite analizar los datos recogidos por un sensor de gas 
+    Esta aplicación permite analizar los datos recogidos por un sensor de LUZ
 """)
 
 # Create map data for EAFIT
